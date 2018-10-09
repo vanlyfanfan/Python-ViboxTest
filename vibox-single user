@@ -1,0 +1,390 @@
+# -*- coding:utf-8 -*-
+import time
+import keyboard,mouse
+from  pynput.mouse import Button, Controller
+import time,subprocess
+
+mouse = Controller()
+sleep=time.sleep(5)
+#def mouse single-click action
+def mouse_click(point):
+    mouse.position=point
+    mouse.press(Button.left)
+    mouse.release(Button.left)
+
+point={
+    'ProdSingle_user_live_button':(1650,910),
+    'ProdSingle_user_In':(1775,916),
+    'ProdSingle_user_OUT':(1821,917),
+    'ProdSingle_user_-6button':(1705,923),
+    'ProdSingle_user_insert':(520,1058),
+    'ProdSingle_user_add':(563,1056),
+    'ProdSingle_user_PL1select':(1087,19),
+    'ProdSingle_user_PL12PRV':(1047,17),
+    'ProdSingle_user_PL2select':(1086,76),
+    'ProdSingle_user_PL2toPRV':(1054,76),
+    'ProdSingle_user_PL3select':(1087,148),
+    'ProdSingle_user_PL3toPRV':(1040,158),
+    'ProdSingle_user_PL4select':(1091,201),
+    'ProdSingle_user_PL4toPRV':(1049,218),
+    'ProdSingle_user_PLEditbutton':(922,267),
+    'ProdSingle_user_PLselect_1stClipSelect':(1453,15),
+    'ProdSingle_user_PLEditwindow_PLVideoTrans_dropdown':(847,561),
+    'ProdSingle_user_PLEditwindow_PLVideoTrans_dropdown_Mix':(796,596),
+    'ProdSingle_user_PLEditwindow_PLVideoTrans_dropdown_Mix_plus10':(1300,558),
+    'ProdSingle_user_PLEditwindow_PLDefauleSpeed_dropdown':(728,662),
+    'ProdSingle_user_PLEditwindow_PLDefauleSpeed_dropdown_Defined':(748,703),
+    'ProdSingle_user_PLEditwindow_PLDefauleSpeed_minus10':(1144,657),
+    'ProdSingle_user_PLEditwindow_PLDefauleSpeed_plus10':(1303,667),
+    'ProdSingle_user_PLEditwindow_PLDefauleSpeed_minus1':(1118,765),
+    'ProdSingle_user_PLEditwindow_PLDefauleSpeed_plus1':(1405,770),
+    'ProdSingle_user_PLEditwindow_ApplyAllElement':(1212,761),
+    'ProdSingle_user_PLEditwindow_Apply':(1407,756),
+    'ProdSingle_user_PLClearAllbutton':(1598,209),
+    'ProdSingle_user_PLClearAllbutton_yes':(1524,202),
+    'ProdSingle_user_PLClearAllbutton_no':(1524,202),
+    'ProdSingle_user_clip_tab':(393,270),
+    'ProdSingle_user_clip_tab_clearAllClipbutton':(813,265),
+    'ProdSingle_user_clip_tab_clearAllClipbutton_yes':(752,269),
+    'ProdSingle_user_clip_tab_clearAllClipbutton_no':(807,267),
+    'ProdSingle_user_PRV2PGM_cam':(1144,396),
+    'ProdSingle_user_CueTab':(274,260),
+    'ProdSingle_user_live_mark':(1527,1033),
+    'ProdSingle_user_Mark':(1602,1034),
+    'ProdSingle_user_1stcue2replay':(89,18),
+    'ProdSingle_user_1stcueselect':(176,41),
+    'ProdSingle_user_nextCue':(1463,1032),
+    'ProdSingle_user_preCue':(1398,1033),
+    'ProdSingle_user_cameraA2PGM':(120,739),
+    'ProdSingle_user_cameraA2PRV':(310,730),
+    'ProdSingle_user_cameraB2PGM':(460,742),
+    'ProdSingle_user_cameraB2PRV':(612,750),
+    'ProdSingle_user_cameraC2PGM':(702,759),
+    'ProdSingle_user_cameraC2PRV':(956,780),
+    'ProdSingle_user_cameraD2PGM':(1055,784),
+    'ProdSingle_user_cameraD2PRV':(1258,767),
+    'ProdSingle_user_cameraE2PGM':(1354,763),
+    'ProdSingle_user_cameraE2PRV':(1354,763),
+    'ProdSingle_user_cameraF2PGM':(1698,761),
+    'ProdSingle_user_cameraF2PRV':(1896,759),
+
+    'ProdSingle_user_replayA2PGM':(245,921),
+    'ProdSingle_user_replayA2PRV':(380,911),
+    'ProdSingle_user_replayB2PGM':(492,938),
+    'ProdSingle_user_replayB2PRV':(625,914),
+    'ProdSingle_user_replayC2PGM':(741,935),
+    'ProdSingle_user_replayC2PRV':(877,930),
+    'ProdSingle_user_replayD2PGM':(986,953),
+    'ProdSingle_user_replayD2PRV':(1112,940),
+    'ProdSingle_user_replayE2PGM':(1208,906),
+    'ProdSingle_user_replayE2PRV':(1341,913),
+    'ProdSingle_user_replayF2PGM':(1429,920),
+    'ProdSingle_user_replayF2PRV':(1583,927),
+    'ProdSingle_user_deleteAllmarkerbutton':(1279,1036),
+    'ProdSingle_user_deleteAllmarkerbutton2deleteALL':(1120,1046),
+    'ProdSingle_user_deleteAllmarkerbutton2deleteManual':(1167,1033),
+    'ProdSingle_user_addAll2PL':(992,76),
+    'ProdSingle_user_speed80':(23,925),
+    'ProdSingle_user_speed50':(25,994),
+    'ProdSingle_user_pgmpause': (34,1033),
+    'ProdSingle_user_pgmplay':(32,694),
+    'ProdSingle_user_importRTDbutton':(1526,264),
+    'ProdSingle_user_importGFXbutton':(1590,261),
+    'ProdSingle_user_importLOGObutton':(1653,270),
+    'ProdSingle_user_importPIPbutton':(1719,268),
+    'ProdSingle_user_importCLIPbutton':(1766,270),
+    'ProdSingle_user_Setup':(1893,268),
+    'ProdSingle_user_ProdPrim_1/2_showPgms':(99,931),
+    'ProdSingle_user_Pref_button': (1409,264),
+    'ProdSingle_user_Pref_button_user1_tab':(616,101),
+    'ProdSingle_user_pref_user1tab_Role_dropdown':(902,166),
+    'ProdSingle_user_pref_user1Tab_ViboxProdSingleUser_confirm':(755,188),
+    'ProdSingle_user_pref_user1Tab_ViboxProdPrimaryUser1/2_confirm':(745,209),
+    'ProdSingle_user_pref_user1Tab_ViboxProdSecondaryUser2/2_confirm':(735,232),
+    'ProdSingle_user_pref_user1Tab_ViboxLiveSingleUser_confirm':(729,253),
+    'ProdSingle_user_pref_user1Tab_ViboxLivePrimaryUser1/2_confirm':(759,265),
+    'ProdSingle_user_pref_user1Tab_ViboxLivePrimaryUser1/3_confirm':(828,291),
+    'ProdSingle_user_pref_user1Tab_ViboxSloMoSingleUser_confirm':(785,298),
+    'ProdSingle_user_pref_user1Tab_ViboxSloMoSecondaryUser2/2_confirm':(825,324),
+    'ProdSingle_user_pref_user1Tab_ViboxSloMoSecondaryUser2/3_confirm':(876,339),
+    'ProdSingle_user_pref_user1Tab_ViboxSloMoThirdUser3/3_confirm':(819,359),
+    'ProdSingle_user_pref_Apply':(1379,997),
+    'ProdSingle_user_pref_Exit':(1450,991),
+
+}
+
+
+
+def startUI():
+    #start vibox UI
+    subprocess.Popen('explorer "C:\Program Files\SIMPLYLIVE.TV\ViBox\ViBox_UI\ViBoxApp.exe"')
+    time.sleep(10)
+    #set pointer positon
+    mouse.position = (1235,892)
+    mouse.press(Button.left)
+    mouse.release(Button.left)
+    time.sleep(8)
+
+
+#create clip USE in and out insert
+#do not delete it, the TEST_AddClip2PL1()also called this function
+#[Finished in 19.2s]
+def clip_InOutInsert_creation(replaypoint):
+    #click live button 
+    mouse_click(point['ProdSingle_user_live_button'])
+    time.sleep(1)
+    #click IN point
+    mouse_click(point['ProdSingle_user_In'])
+    time.sleep(1)
+    #click OUT point
+    time.sleep(10)
+    mouse_click(point['ProdSingle_user_OUT'])
+    time.sleep(1)
+    #click insert button
+    mouse_click(point['ProdSingle_user_insert'])
+    time.sleep(1)
+    #click replay camera
+    replaypointvalue=replaypoint
+    mouse_click(replaypointvalue)
+    
+
+#use marker to create clips
+def clip_marker_creation():
+    #delete all markers
+    mouse_click(point['deleteAllmarkerbutton'])
+    mouse_click(point['Mark'])
+    sleep
+    mouse_click(point['1stcueselect'])
+
+    #click add all to playlist
+    mouse_click(point['addAll2PL'])
+
+    
+
+def replay2PGM(replaycamera):
+    replaycamera=replaycamera
+    #click live
+    mouse_click(point['ProdSingle_user_live_button'])
+    #click -6
+    mouse_click(point['ProdSingle_user_-6button'])
+    #replay to pgm
+    mouse_click(replaycamera)
+
+def replay2PRV(replaycamera):
+    replaycamera=replaycamera
+    #click live
+    mouse_click(point['ProdSingle_user_live_button'])
+    #click -6
+    mouse_click(point['ProdSingle_user_live_button'])
+    #replay to pgm
+    mouse_click(replaycamera)
+
+def slomotion(speed):
+    speed=speed
+    #PGM plaY speed
+    mouse_click(speed)
+
+def deleteAllMarker():
+    mouse_click(point['ProdSingle_user_deleteAllmarkerbutton'])
+    sleep
+    mouse_click(point['ProdSingle_user_deleteAllmarkerbutton2deleteALL'])
+
+def PL_clearAll():
+    time.sleep(2)
+    mouse_click(point['ProdSingle_user_clip_tab_clearAllClipbutton'])
+    sleep
+    mouse_click(point['ProdSingle_user_PLClearAllbutton_yes'])
+
+def replaycam_speedcontrol():
+    time.sleep(5)
+    live
+    mouse_click(point['speed50'])
+    time.sleep(5)
+    mouse_click(point['speed80'])
+    time.sleep(5)
+    mouse_click(point['pgmpause'])
+    time.sleep(5)
+    live
+    mouse_click(point['speed80'])
+    time.sleep5
+
+def Cliptab_delete_all():
+    time.sleep(5)
+    mouse_click(point['ProdSingle_user_clip_tab'])
+    time.sleep(5)
+    mouse_click(point['ProdSingle_user_clip_tab_clearAllClipbutton'])
+    time.sleep(5)
+    mouse_click(point['ProdSingle_user_clip_tab_clearAllClipbutton_yes'])
+    time.sleep(5)   
+
+#create xxxx markers 
+def TEST_markerCreate(amount):
+    t=amount
+    i=0
+    mouse_click(point['ProdSingle_user_live_button'])
+    while i<t:
+        mouse_click(point['ProdSingle_user_Mark'])
+        time.sleep(2)
+        i=i+1
+#create xxxx live markers
+def TEST_LivemarkerCreate(amount):
+    t=amount
+    i=0
+    mouse_click(point['ProdSingle_user_live_button'])
+    while i<t:
+        mouse_click(point['ProdSingle_user_live_mark'])
+        time.sleep(2)
+        i=i+1
+#replay2pgm prv for all,273s
+def TEST_AllReplay2PGMandPRV_withSpeedControl():
+    time.sleep(5)
+    #replayA
+    replay2PGM(point['ProdSingle_user_replayA2PGM'])
+    time.sleep(5)
+    slomotion(point[('ProdSingle_user_speed50')])
+    time.sleep(5)    
+    replay2PRV(point['ProdSingle_user_replayA2PRV'])
+    time.sleep(5)
+    mouse_click(point['ProdSingle_user_PRV2PGM_cam'])
+    slomotion(point[('ProdSingle_user_speed80')])
+    #replayB
+    time.sleep(5)
+    replay2PGM(point['ProdSingle_user_replayB2PGM'])
+    time.sleep(5)
+    slomotion(point[('ProdSingle_user_speed50')])
+    time.sleep(5)
+    replay2PRV(point['ProdSingle_user_replayB2PRV'])
+    time.sleep(5)
+    mouse_click(point['ProdSingle_user_PRV2PGM_cam'])
+    slomotion(point[('ProdSingle_user_speed50')])
+    #reaplayC
+    time.sleep(5)
+    replay2PGM(point['ProdSingle_user_replayC2PGM'])
+    time.sleep(5)
+    slomotion(point[('ProdSingle_user_speed50')])
+    time.sleep(5)
+    replay2PRV(point['ProdSingle_user_replayC2PRV'])
+    time.sleep(5)
+    mouse_click(point['ProdSingle_user_PRV2PGM_cam'])
+    slomotion(point[('ProdSingle_user_speed50')])
+    time.sleep(5)
+    #reaplay D
+    replay2PGM(point['ProdSingle_user_replayD2PGM'])
+    time.sleep(5)
+    slomotion(point[('ProdSingle_user_speed80')])
+    time.sleep(5)
+    replay2PRV(point['ProdSingle_user_replayD2PRV'])
+    time.sleep(5)
+    mouse_click(point['ProdSingle_user_PRV2PGM_cam'])
+    slomotion(point[('ProdSingle_user_speed50')])
+    time.sleep(5)
+    #replay E
+    replay2PGM(point['ProdSingle_user_replayE2PGM'])
+    time.sleep(5)
+    slomotion(point[('ProdSingle_user_speed80')])
+    time.sleep(5)
+    replay2PRV(point['ProdSingle_user_replayE2PRV'])
+    time.sleep(5)
+    mouse_click(point['ProdSingle_user_PRV2PGM_cam'])
+    slomotion(point[('ProdSingle_user_speed50')])
+    time.sleep(5)
+    #replayF
+    replay2PGM(point['ProdSingle_user_replayF2PGM'])
+    time.sleep(5)
+    slomotion(point[('ProdSingle_user_speed50')])
+    time.sleep(5)
+    replay2PRV(point['ProdSingle_user_replayF2PRV'])
+    time.sleep(5)
+    mouse_click(point['ProdSingle_user_PRV2PGM_cam'])
+    slomotion(point[('ProdSingle_user_speed80')])
+    time.sleep(5)
+#live cam 2 pgm prv for all, 168.4s
+def TEST_AllLiveCamera2PGMandPRV():
+    time.sleep(2)
+    mouse_click(point['ProdSingle_user_cameraA2PGM'])
+    time.sleep(2)
+    mouse_click(point['ProdSingle_user_cameraA2PRV'])
+    time.sleep(2)
+    #camera B
+    mouse_click(point['ProdSingle_user_cameraB2PGM'])
+    time.sleep(2)
+    mouse_click(point['ProdSingle_user_cameraB2PRV'])
+    time.sleep(2)
+    #CAMERA C
+    mouse_click(point['ProdSingle_user_cameraC2PGM'])
+    time.sleep(2)
+    mouse_click(point['ProdSingle_user_cameraC2PRV'])
+    time.sleep(2)
+    #CAM D
+    mouse_click(point['ProdSingle_user_cameraD2PGM'])
+    time.sleep(2)
+    mouse_click(point['ProdSingle_user_cameraD2PRV'])
+    time.sleep(2)
+    #CAMERA E
+    mouse_click(point['ProdSingle_user_cameraE2PGM'])
+    time.sleep(2)
+    mouse_click(point['ProdSingle_user_cameraE2PRV'])
+    time.sleep(2)
+    #CAMERA F
+    mouse_click(point['ProdSingle_user_cameraF2PGM'])
+    time.sleep(2)
+    mouse_click(point['ProdSingle_user_cameraF2PRV'])
+    time.sleep(2)
+
+def TEST_AddClip2PL1(amount_times):
+    t=amount_times    
+    for i in range(0,t):
+        clip_InOutInsert_creation(point['ProdSingle_user_replayA2PRV'])
+        time.sleep(5)
+        clip_InOutInsert_creation(point['ProdSingle_user_replayB2PRV'])
+        time.sleep(5)
+        clip_InOutInsert_creation(point['ProdSingle_user_replayC2PRV'])
+        time.sleep(5)
+        clip_InOutInsert_creation(point['ProdSingle_user_replayD2PRV'])
+        time.sleep(5)
+        clip_InOutInsert_creation(point['ProdSingle_user_replayE2PRV'])
+        time.sleep(5)
+        clip_InOutInsert_creation(point['ProdSingle_user_replayF2PRV'])
+        time.sleep(5)
+        i=i+1
+
+
+
+        
+        
+
+
+def PLspeedcontrol80Mix120Allclip(PL_NO):
+    time.sleep(2)
+    PL_NO=PL_NO
+    mouse_click(PL_NO)
+    time.sleep(2)
+    mouse_click(point['ProdSingle_user_PLselect_1stClipSelect'])
+    time.sleep(2)
+    mouse_click(point['ProdSingle_user_PLEditbutton'])
+    time.sleep(2)
+    mouse_click(point['ProdSingle_user_PLEditwindow_PLVideoTrans_dropdown'])
+    time.sleep(2)
+    mouse_click(point['ProdSingle_user_PLEditwindow_PLVideoTrans_dropdown_Mix'])
+    time.sleep(2)
+    for i in range(1,13):
+        mouse_click(point['ProdSingle_user_PLEditwindow_PLVideoTrans_dropdown_Mix_plus10'])
+        time.sleep(1)
+    mouse_click(point['ProdSingle_user_PLEditwindow_PLDefauleSpeed_dropdown'])
+    time.sleep(2)
+    mouse_click(point['ProdSingle_user_PLEditwindow_PLDefauleSpeed_dropdown_Defined'])
+    time.sleep(2)
+    for i in range(1,10):
+        mouse_click(point['ProdSingle_user_PLEditwindow_PLDefauleSpeed_plus10'])
+        time.sleep(1)
+    mouse_click(point['ProdSingle_user_PLEditwindow_PLDefauleSpeed_minus10'])
+    mouse_click(point['ProdSingle_user_PLEditwindow_PLDefauleSpeed_minus10'])
+    time.sleep(2)
+    mouse_click(point['ProdSingle_user_PLEditwindow_ApplyAllElement'])
+
+
+
+
+
+
+
